@@ -1,0 +1,368 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Blogging API Overview &mdash; django-webedit v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-webedit v0.1 documentation" href="index.html" />
+    <link rel="next" title="Reference" href="reference/index.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+  </head>
+  <body>
+<div id="docstitle">
+	<p>django-webedit v0.1 documentation</p>
+</div>
+<div id="header">
+	<div id="title"><h1>Blogging API Overview</h1></div>
+	<ul id="headerButtons">
+		<li id="toc_button"><div class="headerButton"><a href="#">Table of Contents</a></div></li>
+		<li id="page_buttons">
+			<div class="headerButton"><a href="genindex.html" title="General Index" accesskey="I">index</a></div>
+			<div class="headerButton"><a href="reference/index.html" title="Reference" accesskey="N">next</a></div>
+			<div class="headerButton"><a href="getting_started.html" title="Getting Started" accesskey="P">previous</a></div>
+		</li>
+	</ul>
+</div>
+
+<div id="sphinxsidebar">
+  <div class="sphinxsidebarwrapper">
+	<ul><li class="toctree-l1"><a href="index.html">Main Page</a></li></ul>
+	<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#working-with-webedit">Working with webedit</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Blogging API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#basic-methods">Basic Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#get-post-information">Get Post Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-post-information">Set Post Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-category-information">Get Category Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-category-information">Set Category Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#media-objects">Media Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+    <div id="searchbox" style="display: none">
+      
+        <form class="search" action="search.html" method="get">
+			<div class="search-wrapper">
+			<span class="search-left"></span>
+			<input class="prettysearch" type="text" name="q" size="18" />
+			<span class="search-right">&nbsp;</span>
+			</div>
+          <input type="submit" value="Search" class="searchbutton" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+        <p class="searchtip" style="font-size: 90%">
+        Enter search terms or a module, class or function name.
+        </p>
+    </div>
+    <script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+</div>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="blogging-api-overview">
+<h1>Blogging API Overview<a class="headerlink" href="#blogging-api-overview" title="Permalink to this headline">¶</a></h1>
+<p>There are several ways that external clients may interact with blogging software:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>XML-RPC (Wordpress, MetaWeblog, Moveable Type, old Blogger)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://codex.wordpress.org/XML-RPC_Support">http://codex.wordpress.org/XML-RPC_Support</a></li>
+<li><a class="reference external" href="http://www.xmlrpc.com/metaWeblogApi">http://www.xmlrpc.com/metaWeblogApi</a></li>
+<li><a class="reference external" href="http://www.sixapart.com/pronet/breese/xmlrpc/movable_type_api/">http://www.sixapart.com/pronet/breese/xmlrpc/movable_type_api/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Atom (Blogger, TypePad)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://code.blogger.com/">http://code.blogger.com/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>HTTP (Tumblr)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.tumblr.com/docs/en/api">http://www.tumblr.com/docs/en/api</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>REST (Posterous)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://apidocs.posterous.com/">http://apidocs.posterous.com/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>We can rule implementing out Atom because its authentication system requires that both sides of the conversation know the unencrypted password. Django doesn&#8217;t store passwords in a reversible encrypted form, and I whole-heartedly agree with that decision.</p>
+</div>
+<div class="section" id="basic-methods">
+<h1>Basic Methods<a class="headerlink" href="#basic-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="get-post-information">
+<h2>Get Post Information<a class="headerlink" href="#get-post-information" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">mt.getRecentPostTitles(blogid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">numberOfPosts)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wp.getPageList(blog_id,</span> <span class="pre">page_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p>mt return struct:</p>
+<div class="highlight-python"><pre>{
+    'dateCreated': datetime (ISO.8601),
+    'userid': str,
+    'postid': str,
+    'title': str,
+}</pre>
+</div>
+<p>wp return struct:</p>
+<div class="highlight-python"><pre>{
+    'page_id': int,
+    'page_title': str,
+    'page_parent_id': int,
+    'dateCreated': datetime (iso8601)YYYYMMDDTHH:mm:SS,
+}</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">metaWeblog.getRecentPosts(blogid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">numberOfPosts)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wp.getPages(blog_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">metaWeblog.getPost(postid,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wp.getPage(blog_id,</span> <span class="pre">page_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p>metaWeblog return struct:</p>
+<div class="highlight-python"><pre>{
+    'title': str,
+    'description': str,
+    'dateCreated': datetime (iso8601)YYYYMMDDTHH:mm:SS,
+    'enclosure': {'length': int, 'type': str, 'url': str},
+    'source': {'name': str, 'url': str},
+    'author': str,
+    'categories': [str, ...],
+    'link': str,
+}</pre>
+</div>
+<p>wp getPage/getPages struct:</p>
+<div class="highlight-python"><pre>{
+    'userid': int,
+    'page_id': int,
+    'page_status': str,
+    'link': str,
+    'permaLink': str,
+    'categories': [str,],
+    'excerpt': str,
+    'text_more': str,
+    'wp_author': str,
+    'wp_page_parent_title': str,
+    'wp_author_display_name': str,
+    'date_created_gmt': datetime (gmt),
+    'wp_page_template': str,
+    'wp_slug': str,
+    'wp_password': str,
+    'wp_page_parent_id': int,
+    'wp_page_order': int,
+    'wp_author_id': int,
+    'title': str,
+    'description': str,
+    'mt_excerpt': str,
+    'mt_text_more': str,
+    'mt_allow_comments': int,
+    'mt_allow_pings': int,
+    'dateCreated': datetime (iso8601)YYYYMMDDTHH:mm:SS,
+    'custom_fields': [{
+        'id': str,
+        'key': str,
+        'value': str
+    },]
+}</pre>
+</div>
+</div>
+<div class="section" id="set-post-information">
+<h2>Set Post Information<a class="headerlink" href="#set-post-information" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">metaWeblog.newPost(blogid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">content,</span> <span class="pre">publish)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">metaWeblog.editPost(postid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">content,</span> <span class="pre">publish)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wp.newPage(blogid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">content,</span> <span class="pre">publish)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wp.editPage(blogid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">content,</span> <span class="pre">publish)</span></tt></p>
+<p>metaWeblog content struct:</p>
+<div class="highlight-python"><pre>{
+    'title': str,
+    'description': str,
+    'dateCreated': datetime (iso8601)YYYYMMDDTHH:mm:SS,
+    'enclosure': {'length': int, 'type': str, 'url': str},
+    'source': {'name': str, 'url': str},
+    'author': str,
+    'categories': [str, ...],
+    'link': str,
+}</pre>
+</div>
+<p>WordPress content struct:</p>
+<div class="highlight-python"><pre>{
+    'wp_slug': str,
+    'wp_password': str,
+    'wp_page_parent_id': int,
+    'wp_page_order': int,
+    'wp_author_id': int,
+    'title': str,
+    'description': str,
+    'mt_excerpt': str,
+    'mt_text_more': str,
+    'mt_allow_comments': int,
+    'mt_allow_pings': int,
+    'dateCreated': datetime (iso8601)YYYYMMDDTHH:mm:SS,
+    'custom_fields': [{
+        'id': str,
+        'key': str,
+        'value': str
+    },]
+}</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">mt.publishPost(post_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+</div>
+<div class="section" id="get-category-information">
+<h2>Get Category Information<a class="headerlink" href="#get-category-information" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">mt.getCategoryList(blog_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">metaWeblog.getCategories(blog_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wp.getCategories(blog_id,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p>mt return struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s">&#39;categoryId&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;categoryName&#39;</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">},]</span>
+</pre></div>
+</div>
+<p>metaWeblog return struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+        <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">&#39;htmlUrl&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">&#39;rssUrl&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">},]</span>
+</pre></div>
+</div>
+<p>wp return struct:</p>
+<div class="highlight-python"><pre>[{
+    'categoryId': int,
+    'parentId': int,
+    'description': str,
+    'categoryName': str
+    'htmlUrl': str,
+    'rssUrl': str,
+},]</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">mt.getPostCategories(postid,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt></p>
+<p>mt return struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s">&#39;categoryName&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;categoryId&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;isPrimary&#39;</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">},]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-category-information">
+<h2>Set Category Information<a class="headerlink" href="#set-category-information" title="Permalink to this headline">¶</a></h2>
+<p>mt.setPostCategories(postid, username, password, categories)</p>
+<p>mt categories struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s">&#39;categoryId&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;isPrimary&#39;</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">},]</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">wp.newCategory(blog_id,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">category)</span></tt></p>
+<p>wp category struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;slug&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;parent_id&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">wp.deleteCategory(blog_id,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">category_id)</span></tt></p>
+</div>
+<div class="section" id="media-objects">
+<h2>Media Objects<a class="headerlink" href="#media-objects" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">metaWeblog.newMediaObject(blogid,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">content)</span></tt></p>
+<p>metaWeblog content struct:</p>
+<div class="highlight-python"><pre>{
+    'name': str,
+    'type': str (mimetype),
+    'bits': base64-encoded binary content
+}</pre>
+</div>
+<p>metaWeblog return struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&#39;url&#39;</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">wp.uploadFile(blog_id,</span> <span class="pre">username,</span> <span class="pre">password,</span> <span class="pre">data)</span></tt></p>
+<p>wp data struct:</p>
+<div class="highlight-python"><pre>{
+    'name': str,
+    'type': str (mimetype),
+    'bits': base64-encoded binary content,
+    'overwrite': bool
+}</pre>
+</div>
+<p>wp return struct:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&#39;file&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;url&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">mt.supportedMethods</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">mt.supportedTextFilters</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">mt.getTrackbackPings</span></tt></p>
+</div>
+</div>
+
+
+          </div> 
+        </div>
+      </div>
+    <div class="footer">
+    <p>
+      &copy; Copyright 2010, Corey Oordt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+	</p>
+    </div>
+      <div class="clearer"></div>
+    </div>
+	<div id="breadcrumbs">
+		Blogging API Overview
+		</ul>
+	</div>
+	<script type="text/javascript" charset="utf-8" src="_static/toc.js"></script>
+  </body>
+</html>

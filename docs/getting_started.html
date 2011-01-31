@@ -1,0 +1,180 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; django-webedit v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="django-webedit v0.1 documentation" href="index.html" />
+    <link rel="next" title="Blogging API Overview" href="overviewofapis.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body>
+<div id="docstitle">
+	<p>django-webedit v0.1 documentation</p>
+</div>
+<div id="header">
+	<div id="title"><h1>Getting Started</h1></div>
+	<ul id="headerButtons">
+		<li id="toc_button"><div class="headerButton"><a href="#">Table of Contents</a></div></li>
+		<li id="page_buttons">
+			<div class="headerButton"><a href="genindex.html" title="General Index" accesskey="I">index</a></div>
+			<div class="headerButton"><a href="overviewofapis.html" title="Blogging API Overview" accesskey="N">next</a></div>
+			<div class="headerButton"><a href="installation.html" title="Installation" accesskey="P">previous</a></div>
+		</li>
+	</ul>
+</div>
+
+<div id="sphinxsidebar">
+  <div class="sphinxsidebarwrapper">
+	<ul><li class="toctree-l1"><a href="index.html">Main Page</a></li></ul>
+	<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#define-the-api-class">Define the API class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#map-the-model-attributes">Map the model attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#attribute-names">Attribute names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#field-maps">Field maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-overrides">Method Overrides</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overviewofapis.html">Blogging API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overviewofapis.html#basic-methods">Basic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+    <div id="searchbox" style="display: none">
+      
+        <form class="search" action="search.html" method="get">
+			<div class="search-wrapper">
+			<span class="search-left"></span>
+			<input class="prettysearch" type="text" name="q" size="18" />
+			<span class="search-right">&nbsp;</span>
+			</div>
+          <input type="submit" value="Search" class="searchbutton" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+        <p class="searchtip" style="font-size: 90%">
+        Enter search terms or a module, class or function name.
+        </p>
+    </div>
+    <script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+</div>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="define-the-api-class">
+<h1>Define the API class<a class="headerlink" href="#define-the-api-class" title="Permalink to this headline">¶</a></h1>
+<p>Subclass the <tt class="xref py py-class docutils literal"><span class="pre">BaseAPI</span></tt> and define a <tt class="docutils literal"><span class="pre">model</span></tt> attribute. This model is the equivalent of a blog post and is what gets edited.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyWebEdit</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">Post</span>
+</pre></div>
+</div>
+<p>By default any API call that references a blog ignores the blog value. If, however, your model has a &#8220;parent&#8221; relationship (like blog post has to blog), you can define it as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyWebEdit</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">Post</span>
+    <span class="n">parent</span><span class="o">=</span><span class="n">Blog</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="map-the-model-attributes">
+<h1>Map the model attributes<a class="headerlink" href="#map-the-model-attributes" title="Permalink to this headline">¶</a></h1>
+<p>The API has several ways to get the information it needs from your model.</p>
+<div class="section" id="attribute-names">
+<h2>Attribute names<a class="headerlink" href="#attribute-names" title="Permalink to this headline">¶</a></h2>
+<p>If your model has an attribute with the correct name, it will use it.</p>
+</div>
+<div class="section" id="field-maps">
+<h2>Field maps<a class="headerlink" href="#field-maps" title="Permalink to this headline">¶</a></h2>
+<p>You can specify the attribute name to use for an API field.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyWebEdit</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">Post</span>
+    <span class="n">field_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;headline&#39;</span><span class="p">,</span>
+        <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="s">&#39;content&#39;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-overrides">
+<h2>Method Overrides<a class="headerlink" href="#method-overrides" title="Permalink to this headline">¶</a></h2>
+<p>Each attribute uses a <tt class="docutils literal"><span class="pre">get_FIELDNAME</span></tt> method to get its value. You can override this to return a calulated value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyWebEdit</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">Post</span>
+
+    <span class="n">field_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&#39;headline&#39;</span><span class="p">,</span>
+        <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="s">&#39;content&#39;</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get_excerpt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">...&quot;</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>post_attrs:</p>
+<div class="highlight-python"><pre>{
+    'author': get_author interface,
+    'status': str,
+    'link': str,
+    'permalink': str,
+    'categories': get_categories interface,
+    'excerpt': str,
+    'creation_date' datetime,
+    'modified_date' datetime,
+    'slug': str,
+    'title': str,
+    'description': str,
+    'allow_comments': int,
+    'allow_pings': int,
+    'custom_fields': get_custom_fields interface
+}</pre>
+</div>
+<p>uses generic functions to get the data and then return in in the format for the call (wp, mt, mwb)</p>
+</div>
+</div>
+
+
+          </div> 
+        </div>
+      </div>
+    <div class="footer">
+    <p>
+      &copy; Copyright 2010, Corey Oordt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+	</p>
+    </div>
+      <div class="clearer"></div>
+    </div>
+	<div id="breadcrumbs">
+		Getting Started
+		</ul>
+	</div>
+	<script type="text/javascript" charset="utf-8" src="_static/toc.js"></script>
+  </body>
+</html>

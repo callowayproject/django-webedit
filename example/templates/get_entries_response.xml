@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Response to GET /feeds/blogs/myblog/ -->
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<!-- tag:<servername>,<year>:<path> -->
+	<id>tag:localhost,2010:blogs/myblog/</id>
+	<title type="text">My Blog Entries</title>
+	<subtitle type="text"></subtitle>
+	<updated>2010-11-06T13:40:03Z</updated>
+	
+	<!-- Same as the URL that got you here -->
+	<link rel="self" type="application/atom+xml" href="http://localhost:8000/feeds/blogs/myblog/" />
+	
+	<!-- Link to the html version or landing page -->
+	<link rel="alternate" type="text/html" href="http://localhost:8000/blogs/myblog/" />
+	
+	<generator version="1.00" uri="http://localhost:8000">CoolBlog</generator>
+	<entry>
+		<id>tag:localhost,2010-11-08:/myblog/2010/nov/08/atom-powered-robots-run-amok/</id>
+		<title>Atom-Powered Robots Run Amok</title>
+		<link href="http://localhost:8000/myblog/2010/nov/08/atom-powered-robots-run-amok/"/>
+		<link rel="edit" href="http://localhost:8000/feeds/entries/1" />
+		<published>2009-01-27T15:27:57Z</published>
+		<updated>2010-11-06T13:40:03Z</updated>
+		<author>
+			<name>Some Guy</name>
+		</author>
+		<summary type="html">Just a summary.</summary>
+		<content type="html">Main content.</content>
+	</entry>
+</feed>

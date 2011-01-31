@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Attributes &mdash; django-webedit v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="django-webedit v0.1 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="index.html" />
+    <link rel="prev" title="Settings" href="settings.html" /> 
+  </head>
+  <body>
+<div id="docstitle">
+	<p>django-webedit v0.1 documentation</p>
+</div>
+<div id="header">
+	<div id="title"><h1>API Attributes</h1></div>
+	<ul id="headerButtons">
+		<li id="toc_button"><div class="headerButton"><a href="#">Table of Contents</a></div></li>
+		<li id="page_buttons">
+			<div class="headerButton"><a href="../genindex.html" title="General Index" accesskey="I">index</a></div>
+			<div class="headerButton"><a href="settings.html" title="Settings" accesskey="P">previous</a></div>
+		</li>
+	</ul>
+</div>
+
+<div id="sphinxsidebar">
+  <div class="sphinxsidebarwrapper">
+	<ul><li class="toctree-l1"><a href="../index.html">Main Page</a></li></ul>
+	<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#define-the-api-class">Define the API class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#map-the-model-attributes">Map the model attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overviewofapis.html">Blogging API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overviewofapis.html#basic-methods">Basic Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">API Attributes</a></li>
+</ul>
+</li>
+</ul>
+
+    <div id="searchbox" style="display: none">
+      
+        <form class="search" action="../search.html" method="get">
+			<div class="search-wrapper">
+			<span class="search-left"></span>
+			<input class="prettysearch" type="text" name="q" size="18" />
+			<span class="search-right">&nbsp;</span>
+			</div>
+          <input type="submit" value="Search" class="searchbutton" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+        <p class="searchtip" style="font-size: 90%">
+        Enter search terms or a module, class or function name.
+        </p>
+    </div>
+    <script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+</div>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api-attributes">
+<h1>API Attributes<a class="headerlink" href="#api-attributes" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt><strong>author</strong></dt>
+<dd><p class="first">The author of the item.</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">''</span></tt></p>
+<p><em>Aliases:</em> <tt class="docutils literal"><span class="pre">wp_author_display_name</span></tt></p>
+<p class="last"><em>Notes:</em> The author can either be a string or a Django model. If it is a Django model, its <tt class="xref py py-func docutils literal"><span class="pre">__unicode__()</span></tt> representation is used. The model&#8217;s <tt class="docutils literal"><span class="pre">pk</span></tt> attribute is also used for the <strong>author_id</strong>.</p>
+</dd>
+<dt><strong>author_id</strong></dt>
+<dd><p class="first">The ID of the author of the item</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">0</span></tt></p>
+<p><em>Aliases:</em> <tt class="docutils literal"><span class="pre">userid</span></tt>, <tt class="docutils literal"><span class="pre">wp_author_id</span></tt></p>
+<p class="last"><em>Notes:</em> If the <tt class="docutils literal"><span class="pre">author</span></tt> attribute is a Django model, <tt class="docutils literal"><span class="pre">author_id</span></tt> will be its <tt class="docutils literal"><span class="pre">pk</span></tt> attribute. Otherwise an integer is required.</p>
+</dd>
+<dt><strong>status</strong></dt>
+<dd><p class="first">The publish status of the item, such as &#8216;draft&#8217;, &#8216;private&#8217; or &#8216;publish&#8217;.</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">publish</span></tt></p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">page_status</span></tt>, <tt class="docutils literal"><span class="pre">post_status</span></tt></p>
+</dd>
+<dt><strong>id</strong></dt>
+<dd><p class="first">The ID of the post</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">pk</span></tt> attribute of the model</p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">page_id</span></tt>, <tt class="docutils literal"><span class="pre">postid</span></tt></p>
+</dd>
+<dt><strong>permalink</strong></dt>
+<dd><p class="first">The absolute URL to this item</p>
+<p><em>Default:</em> Calling <tt class="docutils literal"><span class="pre">get_absolute_url()</span></tt> on item</p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">link</span></tt>, <tt class="docutils literal"><span class="pre">permaLink</span></tt></p>
+</dd>
+<dt><strong>categories</strong></dt>
+<dd><p class="first">The category(ies) attributed to this item</p>
+<p><em>Default:</em> []</p>
+<p class="last"><em>Aliases:</em> <em>None</em></p>
+</dd>
+<dt><strong>excerpt</strong></dt>
+<dd><p class="first">A brief section of the item, typically the first part of the content.</p>
+<p><em>Default:</em> &#8216;&#8217;</p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">mt_excerpt</span></tt></p>
+</dd>
+<dt><strong>creation_date</strong></dt>
+<dd><p class="first">The date the item was first created.</p>
+<p><em>Default:</em> <em>None</em></p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">date_created_gmt</span></tt>, <tt class="docutils literal"><span class="pre">dateCreated</span></tt></p>
+</dd>
+<dt><strong>slug</strong></dt>
+<dd><p class="first">A URL-izeable string that is typically also used in the URL of the item.</p>
+<p><em>Default:</em> &#8216;&#8217;</p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">wp_slug</span></tt></p>
+</dd>
+<dt><strong>title</strong></dt>
+<dd><p class="first">The title or headline of the item</p>
+<p><em>Default:</em> &#8216;&#8217;</p>
+<p class="last"><em>Aliases:</em> <em>None</em></p>
+</dd>
+<dt><strong>content</strong></dt>
+<dd><p class="first">The content of the item</p>
+<p><em>Default:</em> &#8216;&#8217;</p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">description</span></tt></p>
+</dd>
+<dt><strong>allow_comments</strong></dt>
+<dd><p class="first">Can people comment on this item. Yes = 1, No = 0</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">1</span></tt></p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">mt_allow_comments</span></tt></p>
+</dd>
+<dt><strong>allow_pings</strong></dt>
+<dd><p class="first">Can people ping this item. Yes = 1, No = 0</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">1</span></tt></p>
+<p class="last"><em>Aliases:</em> <tt class="docutils literal"><span class="pre">mt_allow_pings</span></tt></p>
+</dd>
+<dt><strong>custom_fields</strong></dt>
+<dd><p class="first">Custom key/values in a <tt class="docutils literal"><span class="pre">[{'id':</span> <span class="pre">'',</span> <span class="pre">'key':</span> <span class="pre">'',</span> <span class="pre">'value':</span> <span class="pre">''},</span> <span class="pre">]</span></tt> format.</p>
+<p><em>Default:</em> <tt class="docutils literal"><span class="pre">[]</span></tt></p>
+<p class="last"><em>Aliases:</em> <em>None</em></p>
+</dd>
+</dl>
+</div>
+
+
+          </div> 
+        </div>
+      </div>
+    <div class="footer">
+    <p>
+      &copy; Copyright 2010, Corey Oordt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+	</p>
+    </div>
+      <div class="clearer"></div>
+    </div>
+	<div id="breadcrumbs">
+		<a href="index.html" accesskey="U">Reference</a><img src="../_static/triangle_closed.png" height="9" width="9" alt="&gt;">
+		API Attributes
+		</ul>
+	</div>
+	<script type="text/javascript" charset="utf-8" src="../_static/toc.js"></script>
+  </body>
+</html>

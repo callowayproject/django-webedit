@@ -1,0 +1,13 @@
+<service xmlns:atom="http://www.w3.org/2005/Atom">
+  <workspace>
+    <atom:title>My Weblog</atom:title>
+    <collection href="http://www.example.org/blog/entries">
+      <atom:title>Entries</atom:title>
+      <accept>entry</accept>
+    </collection>
+    <collection href="http://www.example.org/blog/photos">
+      <atom:title>Photos</atom:title>
+      <accept>image/*</accept>
+    </collection>
+  </workspace>
+</service>
